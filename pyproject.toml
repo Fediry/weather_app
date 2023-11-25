@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "weather-app"
+version = "0.1.0"
+description = "Small app to check the weather"
+authors = ["John Nolan <90651514+Fediry@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "weather_app"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.31.0"
+Flask = "^3.0.0"
+geocoder = "^1.38.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
