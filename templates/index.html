@@ -3,31 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Weather App</title>
 </head>
 <body>
-    <p>Click the button to get your coordinates.</p>
+    <div class="container">
+        <div class="hero">
+            <h1>Weather</h1>
+            <h3>in</h3>
+            <h2>{{ city }}</h2>
+        </div>
+        <div class="location_info" id="location_info">
+            <p>Latitude: {{ latitude }}</p>
+            <p>Longitude: {{ longitude }}</p>
+            <div class="weather">
+                <h3>{{ day_of_week }}</h3>
+            </div>
+        </div>
+        <div class="zipcode" id="zipcode_prompt">
+            
+        </div>
+    </div>
 
-    <button onclick="getLocation()">Try It</button>
-
-    <p id="demo"></p>
-
-    <script>
-    var x = document.getElementById("demo");
-    
-
-    function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-    }
-
-    function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;
-    }
-</script>
 </body>
 </html>

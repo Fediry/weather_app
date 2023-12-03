@@ -26,15 +26,10 @@ def get_weather(url):
         periods.append(WeatherData(name, start_time, end_time, temperature, temp_unit, details))
     return periods
 
-def get_grid_location(coords):
-    lat, lng = coords
+def get_grid_location(coordinates):
+    lat, lng = coordinates
     url = f"https://api.weather.gov/points/{lat},{lng}"
     response = requests.get(url).json()
-    # grid_info = {
-    #     'gridId': response['properties']['gridId'],
-    #     'gridX': response['properties']['gridX'],
-    #     'gridY': response['properties']['gridY']
-    # }
     forecast_url = response['properties']['forecast']
     return forecast_url
 
