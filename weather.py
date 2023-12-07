@@ -14,6 +14,9 @@ class WeatherData:
 
 
 def get_weather(url):
+    """ Takes a url (should be a forecast grid specific url for api.weather.gov from the get_grid_location() function), 
+    parses the results into a WeatherData dataclass and returns WeatherData for each period as a list.
+    """
     periods = []
     response = requests.get(url).json()
     for period in response['properties']['periods']:
@@ -27,6 +30,8 @@ def get_weather(url):
     return periods
 
 def get_grid_location(coordinates):
+    """ Takes a tuple of coordinates, queries api.weather.gov to get the nearest forecast grid and returns a url for that grid.
+    """
     lat, lng = coordinates
     url = f"https://api.weather.gov/points/{lat},{lng}"
     response = requests.get(url).json()
@@ -35,7 +40,9 @@ def get_grid_location(coordinates):
 
 
 if __name__ == "__main__":
-    grid_locale = get_grid_location((37.3306,-121.904))
+    # For testing.
+    test_coordinates = (37.3306,-121.904)
+    grid_locale = get_grid_location(test_coordinates)
     weather_periods = get_weather(grid_locale)
     for period in weather_periods:
         print(period.name)
