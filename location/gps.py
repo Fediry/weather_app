@@ -1,13 +1,18 @@
 import geocoder
 
 def get_current_gps_coordinates():
-    g = geocoder.ip('me') #this function is used to find the current information using our IP Address
+    """ Uses geocoder module and the machines IP address to find the latitude and longitude. 
+        Warning: if a VPN is being used, the IP address lookup will not be accurate.
+        Returns the City and a tuple of Latitude and Longitude as a tuple.
+    """
+    g = geocoder.ip('me') #'me' uses this machine's IP address
     if g.latlng is not None:
         return (g.city, g.latlng)
     else:
         return None
 
 if __name__ == "__main__":
+    # For testing
     location_info = get_current_gps_coordinates()
     if location_info is not None:
         city, coordinates = location_info
