@@ -7,23 +7,39 @@
     <title>Weather App</title>
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
+    <main class="content-grid">
+
+        <header class="header">
+
             <h1>Weather</h1>
             <h3>in</h3>
             <h2>{{ city }}</h2>
-        </div>
-        <div class="location_info" id="location_info">
-            <p>Latitude: {{ latitude }}</p>
-            <p>Longitude: {{ longitude }}</p>
-            <div class="weather">
-                <h3>{{ day_of_week }}</h3>
-            </div>
-        </div>
+        
+            <p>(Latitude: {{ latitude }} | Longitude: {{ longitude }})</p>
+
+        </header>
+
         <div class="zipcode" id="zipcode_prompt">
-            
+
+            <p>Location not correct? Try entring your zipcode:</p>
+
+            <form method="post">
+                <label for="zipcode">Zipcode</label>
+                <input type="text" name="zipcode" value=" {{ request.form['zipcode'] }}"></input>
+                <button type="submit">Go!</button>
+            </form>
+
         </div>
-    </div>
+
+        <div class="weather_period">
+            {% for period in local_weather %}
+            <h3>{{ period.name }}</h3>
+            <p>Temperature: {{ period.temperature }} {{ period.temp_unit }}°</p>
+            <p>{{ period.details }}</p>
+            {% endfor %}
+        </div>
+        
+    </main>
 
 </body>
 </html>
