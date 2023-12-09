@@ -31,11 +31,17 @@
 
         </div>
 
-        <div class="weather_period">
+        <div class="weather_band">
             {% for period in local_weather %}
-            <h3>{{ period.name }}</h3>
-            <p>Temperature: {{ period.temperature }} {{ period.temp_unit }}°</p>
-            <p>{{ period.details }}</p>
+            <div class="weather_card">
+                
+                <article>
+                    <h1>{{ period.name }}</h1>
+                    <p>Temperature: {{ period.temperature }} {{ period.temp_unit }}°</p>
+                    <p>{{ period.details }}</p>
+                </article>
+                
+            </div>
             {% endfor %}
         </div>
         

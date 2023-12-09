@@ -41,8 +41,50 @@
     text-align: center;
 }
 
-.weather_period {
-    background-color: fff;
+.weather_band {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 12px;
+}
 
-    padding: 0 1em;
+.weather_card {
+    background-color: fff;
+    text-decoration: none;
+    color: #444;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+
+    position: relative;
+    top: 0;
+    transition: all .1s ease-in;
+}
+
+.weather_card:hover {
+    top: -2px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.weather_card article {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.weather_card p {
+    flex: 1;
+    line-height: 1.4;
+}
+
+.weather_card h1 {
+    font-size: 20px;
+    margin: 0;
+    color: #333
 }
